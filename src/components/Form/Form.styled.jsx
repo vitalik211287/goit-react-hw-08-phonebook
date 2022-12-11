@@ -37,9 +37,11 @@ export const Message = styled.p`
   display: inline-block;
   padding-right: 8px;
   float: left;
-  font-size: 24px;
+  font-size: 21px;
   text-align: left;
   color: black;
+  width: 80%;
+  margin: 0;
 `;
 export const Forma = styled.form`
   display: flex;
