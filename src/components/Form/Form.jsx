@@ -2,9 +2,23 @@ import React from 'react';
 import { Button, Input, Label, Forma } from './Form.styled';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/slice/Slice';
 
-export function Form({ addContact, contacts }) {
-  const [id, setId] = useState('');
+
+export function Form() {
+  const contacts = useSelector(state => state.contacts.value);
+  console.log(contacts);
+   const dispatch = useDispatch();
+    
+const add = contact => {
+  dispatch(addContact(state));
+};
+    const [id, setId] = useState('');
+    
+
+
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -12,7 +26,7 @@ export function Form({ addContact, contacts }) {
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-
+console.log(e.currentTarget.value);
     switch (name) {
       case 'name':
         setName(value);
@@ -36,7 +50,7 @@ export function Form({ addContact, contacts }) {
   const handleSubmit = e => {
     e.preventDefault();
     reset();
-    addContact(state);
+    add();
   };
 
   const reset = () => {
