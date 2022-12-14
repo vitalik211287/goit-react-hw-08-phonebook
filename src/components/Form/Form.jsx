@@ -8,7 +8,6 @@ import { addContact } from '../../redux/slice/Slice';
 
 export function Form() {
   const contacts = useSelector(state => state.contacts.value);
-  console.log(contacts);
    const dispatch = useDispatch();
     
 const add = contact => {

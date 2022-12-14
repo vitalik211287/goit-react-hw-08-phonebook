@@ -1,45 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sections, Title } from './App.styled';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
 import Contact from './Contact/Contact';
-import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from 'redux/slice/Slice';
 
 export function App() {
-const contacts = useSelector(state => state.contacts.value);
+  const filter = useSelector(state => state.contacts.filter);
 
-
-//   useEffect(() => {
-//     window.localStorage.setItem('contacts', JSON.stringify(contacts));
-//   }, [contacts]);
-    
-  const [filter, setFilter] = useState('');
-  const onChangeFilter = e => {
-    setFilter(e.target.value);
+  const dispatch = useDispatch();
+  const setContact = value => {
+    dispatch(setFilter(value));
   };
 
-//   const addContact = data => {
-//     setContacts(prevState => [...prevState, data]);
-//   };
-
-//   const deleteContact = id => {
-//     setContacts(prevState => prevState.filter(contact => contact.id !== id));
-//   };
-
-  const state = { filter, contacts };
-  const normalizedFilter = filter.toLowerCase();
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
   return (
     <Sections>
       <Title>Phonebook</Title>
       <Form />
       <Title>Contacts</Title>
-      <Filter onChange={onChangeFilter} fiter={filter} value={filter}></Filter>
-      <Contact contacts={visibleContacts}  />
+      <Filter
+        onChange={e => setContact(e.target.value)}
+             value={filter}
+      ></Filter>
+      <Contact />
     </Sections>
   );
 }
+
+
