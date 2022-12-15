@@ -11,7 +11,6 @@ const contactList = [
 const persistConfig = {
   key: 'contacts',
   storage,
-  whitelist: ['items'],
 };
 
 
