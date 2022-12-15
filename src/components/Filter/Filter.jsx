@@ -2,6 +2,7 @@
 import { Input, Label } from 'components/Form/Form.styled';
 import React from 'react';
 import { Filters } from './Filter.styled';
+import PropTypes from 'prop-types';
 
 const Filter = ({ onChange, value }) => {
   return (
@@ -17,5 +18,10 @@ const Filter = ({ onChange, value }) => {
       </Label>
     </Filters>
   );
+};
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  onChange: PropTypes.func,
 };
 export default Filter;
