@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sections, Title } from './App.styled';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
