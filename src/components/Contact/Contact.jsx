@@ -16,8 +16,7 @@ const Contact = () => {
     <div>
       {contacts.length > 0 ? (
         <ContactsList>
-                  {contacts.map(({ name, number, id }) => {
-              console.log(contacts);
+          {contacts.map(({ name, number, id }) => {
             return (
               <ContactsItem key={id}>
                 <Button onClick={() => removeContact(id)} type="button">
