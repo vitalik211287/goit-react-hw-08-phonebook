@@ -2,26 +2,32 @@
 import { Input, Label } from 'components/Form/Form.styled';
 import React from 'react';
 import { Filters } from './Filter.styled';
-import PropTypes from 'prop-types';
+import { setFilter } from 'redux/slice/Slice';
 
-const Filter = ({ onChange, value }) => {
+
+  const filter = useSelector(state => state.contacts.filter);
+
+  const dispatch = useDispatch();
+  const setContact = value => {
+    dispatch(setFilter(value));
+  };
+
+
+const Filter = () => {
   return (
     <Filters>
       <Label>
         Finde contacts by name
         <Input
           type="text"
-          onChange={onChange}
+          onChange={e => setContact(e.target.value)}
           name="filter"
-          value={value}
+          value={filter}
         ></Input>
       </Label>
     </Filters>
   );
 };
 
-Filter.propTypes = {
-  filter: PropTypes.string,
-  onChange: PropTypes.func,
-};
+
 export default Filter;
