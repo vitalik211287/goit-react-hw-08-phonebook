@@ -2,6 +2,7 @@
 import { Input, Label } from 'components/Form/Form.styled';
 import React from 'react';
 import { Filters } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/slice/Slice';
 
 
