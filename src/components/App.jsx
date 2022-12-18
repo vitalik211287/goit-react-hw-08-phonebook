@@ -3,17 +3,17 @@ import { Sections, Title } from './App.styled';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
 import Contact from './Contact/Contact';
+import API from './API';
 
 export function App() {
   return (
     <Sections>
       <Title>Phonebook</Title>
-      <Form />
+      {/* <Form /> */}
       <Title>Contacts</Title>
-      <Filter/>   
+      <API />
+      {/* <Filter /> */}
       <Contact />
     </Sections>
   );
 }
-
-
