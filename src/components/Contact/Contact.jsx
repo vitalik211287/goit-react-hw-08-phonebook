@@ -1,36 +1,38 @@
 import { Title } from 'components/App.styled';
-import { ContactsItem, ContactsList } from './Contacts.styled';
-import { useGetContactsQuery } from 'redux/slice/Slice';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { deleteContact } from '../../redux/slice/Slice';
-// import getFilteredContacts from 'redux/filteredContacts.selector';
+import { ContactsItem, ContactsList, MessageText } from './Contacts.styled';
+import {
+  useGetContactsQuery,
+  useDeleteContactsMutation,
+} from 'redux/slice/Slice';
 
-const { Message, Button } = require('components/Form/Form.styled');
+const { Button } = require('components/Form/Form.styled');
 
-const Contact = () => {
-        const { contacts = [] } = useGetContactsQuery();
-        console.log(contacts);
-//         return data.map(el => {
-//           return el.name;
-//         });
-//   const contacts = useSelector(getFilteredContacts);
-//   const dispatch = useDispatch();
-//   const removeContact = id => {
-//     dispatch(deleteContact(id));
-//   };
+const Contact = ({ filter }) => {
+  const { data = [] } = useGetContactsQuery();
+  const [removeContact] = useDeleteContactsMutation();
+
+  const normalizedFilter = filter.toLowerCase();
+
+  const contacts = data.filter(contact => {
+    return contact.name.toLowerCase().includes(normalizedFilter);
+  });
+
+  const handleDeleteContact = async id => {
+    await removeContact(id);
+  };
   return (
     <div>
-          {contacts.length > 0 ? (
+      {contacts.length > 0 ? (
         <ContactsList>
           {contacts.map(({ name, phone, id }) => {
             return (
               <ContactsItem key={id}>
-                {/* <Button onClick={() => removeContact(id)} type="button">
+                <Button onClick={() => handleDeleteContact(id)} type="button">
                   Delete
-                </Button> */}
-                <Message>
+                </Button>
+                <MessageText>
                   {name}: {phone}
-                </Message>
+                </MessageText>
               </ContactsItem>
             );
           })}

@@ -1,19 +1,19 @@
-import React from 'react';
 import { Sections, Title } from './App.styled';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
 import Contact from './Contact/Contact';
-import API from './API';
+import { useState } from 'react';
+
 
 export function App() {
+      const [filter, setFilter] = useState('');
   return (
     <Sections>
       <Title>Phonebook</Title>
-      {/* <Form /> */}
+      <Form />
       <Title>Contacts</Title>
-      <API />
-      {/* <Filter /> */}
-      <Contact />
+      <Filter value={filter} onChange={e => setFilter(e.target.value)} />
+      <Contact filter={filter} />
     </Sections>
   );
 }

@@ -14,32 +14,32 @@ export const contactApi = createApi({
       providesTags: ['Contacts'],
     }),
 
-    // addContacts: build.mutation({
-    //   query: contact => ({
-    //     url: `Contacts/`,
-    //     method: 'POST',
-    //     body: contact,
-    //   }),
-    //   invalidatesTags: ['Contacts'],
-    // }),
+    addContacts: build.mutation({
+      query: contact => ({
+        url: `Contacts`,
+        method: 'POST',
+        body: contact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
 
-    // updateContactbyId: build.mutation({
-    //   query: contact => ({
-    //     url: `contacts/${contact.id}`,
-    //     method: 'PUT',
-    //     body: contact,
-    //   }),
-    //   invalidatesTags: ['Contacts'],
-    // }),
+    updateContactbyId: build.mutation({
+      query: contact => ({
+        url: `contacts/${contact.id}`,
+        method: 'PUT',
+        body: contact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
 
-    // addContacts: build.mutation({
-    //   query: contact => ({
-    //     url: `/Contacts`,
-    //     method: 'POST',
-    //     body: contact,
-    //   }),
-    //   invalidatesTags: ['Contacts'],
-    // }),
+    deleteContacts: build.mutation({
+      query: id => ({
+        url: `Contacts/${id}`,
+        method: 'DELETE',
+        body: id,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
   }),
 });
 
@@ -47,7 +47,7 @@ export const contactApi = createApi({
 export const {
   useGetContactsQuery,
   useAddContactsMutation,
-  useGetContactByIdQuery,
+  useDeleteContactsMutation,
 } = contactApi;
 
 // import { createSlice } from '@reduxjs/toolkit';

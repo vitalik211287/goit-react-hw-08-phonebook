@@ -10,7 +10,7 @@ export const ContactsList = styled.ul`
 export const ContactsItem = styled.li`
   text-align: end;
   margin-bottom: 8px;
-  width: 100%;
+  width: 450px;
   padding-bottom: 10px;
   margin: 0;
 `;
@@ -18,5 +18,15 @@ export const Message = styled.p`
   text-align: end;
   margin-bottom: 8px;
   width: 100%;
+  margin: 0;
+`;
+export const MessageText = styled.p`
+  display: inline-block;
+  padding-right: 8px;
+  float: left;
+  font-size: 18px;
+  text-align: left;
+  color: black;
+  width: 80%;
   margin: 0;
 `;
