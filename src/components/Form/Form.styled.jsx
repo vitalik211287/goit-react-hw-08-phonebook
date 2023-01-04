@@ -7,8 +7,8 @@ export const Label = styled.label`
 `;
 export const Button = styled.button`
 display:inline-block;
-max-width: 30%;
-/  width: 100%;
+ max-width: 61%;
+// width: 100%;
   height: 25px;
   color: white;
   border-radius: 2.5px;
@@ -20,8 +20,9 @@ max-width: 30%;
   cursor: pointer;
 
   :hover {
-    background-color: #f0ffff;
-    color: #ff9000;
+     :hover {
+    background-color: #26d7ff;
+    color: white;
     border: solid 1px grey;
   }
 `;
@@ -51,8 +52,24 @@ export const Forma = styled.form`
   height: 50%;
   margin: 0 auto;
   margin-bottom: 0;
+//   margin-top: 50px;
   padding: 25px;
-  border: solid 1px grey;
-  border-radius: 2.5px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  //   border: solid 1px grey;
+  //   border-radius: 2.5px;
+  //   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  //
+`;
+
+    
+export const FormContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: absolut;
+  width: 30%;
+  height: 100vh;
+  margin-right: 0;
+  padding-top: 50px;
+  border-right: 1px solid black;
+//   position: fixed;
 `;

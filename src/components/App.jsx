@@ -1,39 +1,22 @@
-import { Sections, Title } from './App.styled';
-
-import Filter from './Filter/Filter';
-import Contact from './Contact/Contact';
-import { useState } from 'react';
 import React from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import { Contacts } from 'pages/Contacts';
+import { Contacts } from 'pages/Contacts/Contacts';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Login } from 'pages/Login/Login';
-import { Register } from 'pages/Register/Register';
-import Form from './Form/Form';
-
+import { Register } from 'pages/Register/Regiser';
 
 export function App() {
-  //   const [filter, setFilter] = useState('');
   return (
-    <>
-      {/* <Title>Phonebook</Title> */}
+    <div className="ggggg">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Login />} />
-          <Route path="register" element={<Register />} />
-          {/* <Route path="register" element={<Contacts />} /> */}
-          <Route path="contact" element={<Form />} />
-          {/* <Sections>
-      
-        <Form />
-        <Title>Contacts</Title>
-        <Filter value={filter} onChange={e => setFilter(e.target.value)} />
-        <Contact filter={filter} />
-      </Sections> */}
-
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route index element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="contacts" element={<Contacts />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </>
+      <Outlet />
+    </div>
   );
 }

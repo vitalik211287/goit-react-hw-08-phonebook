@@ -1,10 +1,18 @@
-import { Title } from 'components/App.styled';
-import { ContactsItem, ContactsList, MessageText } from './Contacts.styled';
+import {
+  Title,
+  Avatar,
+  ContactContainer,
+  ContactsItem,
+  ContactsList,
+  Container,
+  Message,
+  MessageText,
+} from './Contacts.styled';
 import {
   useGetContactsQuery,
   useDeleteContactsMutation,
 } from 'redux/slice/Slice';
-
+// import { Button} from '../../pages/Login/Login.styled';
 const { Button } = require('components/Form/Form.styled');
 
 const Contact = ({ filter }) => {
@@ -21,18 +29,23 @@ const Contact = ({ filter }) => {
     await removeContact(id);
   };
   return (
-    <div>
+    <ContactContainer>
       {contacts.length > 0 ? (
         <ContactsList>
+          <Title>CONTACTS</Title>
           {contacts.map(({ name, phone, id }) => {
             return (
               <ContactsItem key={id}>
-                <Button onClick={() => handleDeleteContact(id)} type="button">
-                  Delete
-                </Button>
-                <MessageText>
-                  {name}: {phone}
-                </MessageText>
+                <Container>
+                  <Avatar>
+                    <Message color="white"> {name[0]}</Message>
+                  </Avatar>
+                  <MessageText>{name}:</MessageText>
+                  <MessageText>{phone}</MessageText>
+                  <Button onClick={() => handleDeleteContact(id)} type="button">
+                    Delete
+                  </Button>
+                </Container>
               </ContactsItem>
             );
           })}
@@ -40,7 +53,7 @@ const Contact = ({ filter }) => {
       ) : (
         <Title>Contact list is empty</Title>
       )}
-    </div>
+    </ContactContainer>
   );
 };
 export default Contact;

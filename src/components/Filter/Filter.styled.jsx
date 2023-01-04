@@ -8,3 +8,13 @@ export const Input = styled.input`
   height: 25px;
   width: 50%;
 `;
+export const FineContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 33%;
+  height: 100%;
+  margin-right: 30px;
+  padding-top: 15px;
+  justify-content: flex-end;
+//   position: fixed;
+`;

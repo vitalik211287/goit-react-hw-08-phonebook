@@ -1,40 +1,20 @@
 import { Outlet } from 'react-router-dom';
-import {
-  Header,
-  Logo,
-  Container,
-  Link,
-  Title,
-  StyledLink,
-} from './SharedLayout.styled';
-import telephoneImg from '../../img/telephone.png';
+import { Header } from './SharedLayout.styled';
+import authSelectors from 'redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import { UsersMenu } from 'components/UsersMenu/UsersMenu';
+import { Navigation } from 'components/Navigation/Navigation';
+import { Logo } from 'components/Logo/Logo';
 
 export const SharedLayout = () => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <Container>
+    <>
       <Header>
-        <Logo>
-          <div>
-            <StyledLink to="/login">
-              <span role="img" aria-label="telephone icon">
-                <img
-                  src={telephoneImg}
-                  alt="telephone"
-                  style={{ height: 35, width: 40 }}
-                ></img>
-              </span>
-              Phonebook
-            </StyledLink>
-            {/* <Title>Phonebook</Title> */}
-          </div>
-        </Logo>
-        <nav>
-          <Link to="/Contacts">Contacts</Link>
-          <Link to="/">Login</Link>
-          <Link to="/register">Register</Link>
-        </nav>
+        <Logo />
+        {!isLoggedIn ? <Navigation /> : <UsersMenu />}
       </Header>
       <Outlet />
-    </Container>
+    </>
   );
 };
