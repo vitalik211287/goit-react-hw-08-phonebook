@@ -3,8 +3,8 @@ import { Button } from '../LoginForm/LoginForm.styled';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useAddContactsMutation } from 'redux/slice/Slice';
-import { ReactComponent as Name } from '../../img/user.svg';
-import { ReactComponent as Phone } from '../../img/telephone.svg';
+import { ReactComponent as Name } from 'img/user.svg';
+import { ReactComponent as Phone } from 'img/telephone.svg';
 import {
   InputContainer,
   Title,

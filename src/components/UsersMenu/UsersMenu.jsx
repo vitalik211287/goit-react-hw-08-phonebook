@@ -3,7 +3,7 @@ import { logOut } from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
 
 import {
-  Link,
+//   Link,
   UserMenu,
   Button,
   UserName,
@@ -13,13 +13,14 @@ import {
 export const UsersMenu = () => {
   const name = useSelector(authSelectors.getUserName);
   const dispatch = useDispatch();
-  const handleLogOut = () => {
+  const handleLogOut = (e) => {
+      e.preventDefault();
     dispatch(logOut());
   };
   return (
     <UserMenu>
       <UserMenuContacts>
-        <Link to="/contacts">Contacts</Link>
+        {/* <Link to="/contacts">Contacts</Link> */}
       </UserMenuContacts>
       <div className="user__menu">
         <UserName>Welcome, {name}</UserName>
