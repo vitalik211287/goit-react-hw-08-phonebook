@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import sliceReducer from 'redux/slice/Slice';
+// import sliceReducer from 'redux/slice/Slice';
 import { contactApi } from './slice/Slice';
 import authSlice from './auth/auth-slice';
 import storage from 'redux-persist/lib/storage';

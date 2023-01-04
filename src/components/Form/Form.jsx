@@ -1,15 +1,15 @@
-import { Input, Label, Forma, FormContainer } from './Form.styled';
+import { Label, Forma, FormContainer } from './Form.styled';
 import { Button } from '../LoginForm/LoginForm.styled';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useAddContactsMutation, useGetContactsQuery } from 'redux/slice/Slice';
+import { useAddContactsMutation } from 'redux/slice/Slice';
 import { ReactComponent as Name } from '../../img/user.svg';
 import { ReactComponent as Phone } from '../../img/telephone.svg';
 import {
   InputContainer,
   Title,
 } from 'components/RegisterForm/RegisterForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
 
 export function Form() {
@@ -24,7 +24,7 @@ export function Form() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
   const { data } = useSelector(getContacts);
 
   const handleInputChange = e => {
