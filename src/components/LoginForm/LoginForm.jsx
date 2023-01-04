@@ -1,4 +1,4 @@
-import { Img, Title } from 'components/RegisterForm/RegisterForm.styled';
+import { Container, Img, StyledLink, Title } from 'components/RegisterForm/RegisterForm.styled';
 import { Forma, Button, Label, Text } from './LoginForm.styled';
 import telephoneImg from '../../img/telephone.png';
 import { ReactComponent as Email } from '../../img/email.svg';
@@ -61,6 +61,10 @@ export const LoginForm = () => {
         </span>
       </Label>
       <Button type="submit">Log in</Button>
+      <Container>
+        <p>Don't have a profile?</p>
+        <StyledLink to="/register">Sign up</StyledLink>
+      </Container>
     </Forma>
   );
 };

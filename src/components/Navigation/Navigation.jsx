@@ -6,7 +6,7 @@ import {
 export const Navigation = () => {
   return (
     <AuthNav>
-      <Link to="/">Register</Link>
+      <Link to="/">Sign up</Link>
       <Link to="login">Login</Link>
     </AuthNav>
   );

@@ -20,7 +20,7 @@ export const UsersMenu = () => {
   return (
     <UserMenu>
       <UserMenuContacts>
-        {/* <Link to="/contacts">Contacts</Link> */}
+        {/* <Link to="/">Contacts</Link> */}
       </UserMenuContacts>
       <div className="user__menu">
         <UserName>Welcome, {name}</UserName>
