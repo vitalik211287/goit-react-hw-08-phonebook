@@ -49,7 +49,7 @@ export const Text = styled.p`
   text-align: center;
   width: 95%;
   padding: 20px;
-  font-size: 20px;
+  font-size: 18px;
 //   color: #26b9ff;
 //   font-weight: 400;
   margin: 0;
