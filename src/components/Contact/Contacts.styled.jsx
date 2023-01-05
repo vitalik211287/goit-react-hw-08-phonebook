@@ -14,13 +14,9 @@ export const ContactsItem = styled.li`
   width: 100%;
   padding-bottom: 10px;
   margin: 0;
-  height:100%;
+  height: 100%;
 `;
 export const Message = styled.p`
-  //   text-align: end;
-  //   margin-bottom: 8px;
-  //   width: 100%;
-  //   margin: 0;
   color: white;
   font-size: 25px;
 `;
@@ -29,20 +25,16 @@ export const MessageText = styled.p`
   padding: 0 30px;
   float: left;
   font-size: 25px;
-//   font-weight: 25;
   text-align: left;
   color: black;
   width: 100%;
   margin: 0;
 `;
 export const ContactContainer = styled.div`
-  //   display: flex;
-  //   flex-wrap: wrap;
   width: 100%;
   height: 100%;
   margin-right: auto;
   padding-top: 15px;
-//   padding-left: 35%;
   justify-content: flex-end;
 `;
 export const Avatar = styled.div`
@@ -51,15 +43,15 @@ export const Avatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #26b9ff;
-  border-radius: 50% ;
-  border: 1px solid black
+//   background: #26b9ff;
+  background: ${getRandomHexColor};
+  border-radius: 50%;
+  border: 1px solid black;
 `;
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  width:100%;
- 
+  width: 100%;
 `;
 export const Title = styled.p`
   text-align: center;
@@ -70,4 +62,8 @@ export const Title = styled.p`
   font-weight: 400;
   margin-bottom: 50px;
 `;
-   
+function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 176543  ).toString(16)}`;
+return  '#' + (((1 + Math.random()) * (1 << 24)) | 0).toString(16).substr(-6);
+}
+console.log(getRandomHexColor());

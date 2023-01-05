@@ -7,7 +7,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 50px;
+  padding: 8px 30px;
   box-sizing: border-box;
   flex-shrink: 0;
   height: 58px;

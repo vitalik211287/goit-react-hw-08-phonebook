@@ -1,32 +1,27 @@
 import { Label, Forma, FormContainer } from './Form.styled';
-import { Button } from '../LoginForm/LoginForm.styled';
-import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useAddContactsMutation } from 'redux/slice/Slice';
+import {
+  useAddContactsMutation,
+  useGetContactsQuery,
+} from 'redux/contacts/contacts-operation';
 import { ReactComponent as Name } from 'img/user.svg';
 import { ReactComponent as Phone } from 'img/telephone.svg';
 import {
   InputContainer,
   Title,
 } from 'components/RegisterForm/RegisterForm.styled';
-import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/contacts/contacts-selectors';
+import { Button } from '../LoginForm/LoginForm.styled';
 
 export function Form() {
   const [addContact] = useAddContactsMutation();
-  //   const { data } = useGetContactsQuery();
+  const { data } = useGetContactsQuery();
   const handleSubmit = async e => {
     e.preventDefault();
     reset();
-    await addContact({ name: name, phone: number, id: id });
+    await addContact({ name: name, number: number });
   };
-
-  const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-//   const dispatch = useDispatch();
-  const { data } = useSelector(getContacts);
-
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {
@@ -39,10 +34,9 @@ export function Form() {
       default:
         return;
     }
-    setId(nanoid(4));
     data.forEach(contact => {
-      const { name, phone } = contact;
-      if (phone === value) {
+      const { name, number } = contact;
+      if (number === value) {
         alert(`${name} is already in contacts`);
         reset();
       }

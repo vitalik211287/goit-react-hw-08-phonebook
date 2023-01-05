@@ -1,28 +1,61 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createApi,
+  fetchBaseQuery,
+} from '@reduxjs/toolkit/query/react';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
-export const createContact = createAsyncThunk(
-  'auth/createcontact',
-  async newContact => {
-    try {
-      const { data } = await axios.post('/contacts', newContact);
-      console.log(data);
-      //   token.unset();
-      return data;
-    } catch (error) {
-      console.log(error.message);
+const baseQuery = fetchBaseQuery({
+  baseUrl: 'https://connections-api.herokuapp.com/',
+  prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`);
     }
-  }
-);
-export const getUser = createAsyncThunk('auth/getuser', async() => {
-  try {
-    const { data } = await axios.get('/contacts');
-    console.log(data);
-    // token.unset();
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
+    return headers;
+  },
 });
+console.log(baseQuery);
+export const contactApi = createApi({
+  reducerPath: 'contactsApi',
+  providesTags: ['Contacts'],
+  baseQuery,
+
+  endpoints: build => ({
+    getContacts: build.query({
+      query: () => 'contacts',
+      url: `users`,
+    }),
+
+    addContacts: build.mutation({
+      query: contact => ({
+        url: `contacts/`,
+        method: 'POST',
+        body: contact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+
+    updateContactbyId: build.mutation({
+      query: contact => ({
+        url: `contacts/${contact.id}`,
+        method: 'PUT',
+        body: contact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+
+    deleteContacts: build.mutation({
+      query: id => ({
+        url: `Contacts/${id}`,
+        method: 'DELETE',
+        body: id,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+  }),
+});
+
+export const {
+  useGetContactsQuery,
+  useAddContactsMutation,
+  useDeleteContactsMutation,
+} = contactApi;

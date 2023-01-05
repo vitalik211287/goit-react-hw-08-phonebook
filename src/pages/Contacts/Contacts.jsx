@@ -1,4 +1,5 @@
 // import Contact from "components/Contact/Contact";
+import Contact from "components/Contact/Contact";
 import Filter from "components/Filter/Filter";
 import Form from "components/Form/Form";
 import { useState } from "react";
@@ -14,7 +15,7 @@ export const Contacts = () => {
       <>
         <Container>
           {<Form />}
-          {/* {<Contact filter={filter} />} */}
+          {<Contact filter={filter} />}
           {<Filter value={filter} onChange={e => setFilter(e.target.value)} />}
         </Container>
       </>

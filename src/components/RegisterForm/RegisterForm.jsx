@@ -39,7 +39,8 @@ export const RegisterForm = () => {
     setName('');
     setEmail('');
     setPassword('');
-  };
+    };
+  
   return (
     <div>
       <Forma onSubmit={handleSubmit}>

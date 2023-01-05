@@ -1,3 +1,8 @@
+import { Button } from 'components/Form/Form.styled';
+import {
+  useDeleteContactsMutation,
+  useGetContactsQuery,
+} from 'redux/contacts/contacts-operation';
 import {
   Title,
   Avatar,
@@ -8,32 +13,26 @@ import {
   Message,
   MessageText,
 } from './Contacts.styled';
-import {
-  useGetContactsQuery,
-  useDeleteContactsMutation,
-} from 'redux/slice/Slice';
-// import { Button} from '../../pages/Login/Login.styled';
-const { Button } = require('components/Form/Form.styled');
 
 const Contact = ({ filter }) => {
+
   const { data = [] } = useGetContactsQuery();
   const [removeContact] = useDeleteContactsMutation();
-
   const normalizedFilter = filter.toLowerCase();
-
   const contacts = data.filter(contact => {
     return contact.name.toLowerCase().includes(normalizedFilter);
   });
 
   const handleDeleteContact = async id => {
     await removeContact(id);
-  };
+    };
+    
   return (
     <ContactContainer>
       {contacts.length > 0 ? (
         <ContactsList>
           <Title>CONTACTS</Title>
-          {contacts.map(({ name, phone, id }) => {
+          {contacts.map(({ name, number, id }) => {
             return (
               <ContactsItem key={id}>
                 <Container>
@@ -41,7 +40,7 @@ const Contact = ({ filter }) => {
                     <Message color="white"> {name[0]}</Message>
                   </Avatar>
                   <MessageText>{name}:</MessageText>
-                  <MessageText>{phone}</MessageText>
+                  <MessageText>{number}</MessageText>
                   <Button onClick={() => handleDeleteContact(id)} type="button">
                     Delete
                   </Button>
