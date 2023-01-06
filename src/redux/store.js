@@ -13,19 +13,17 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-
-
-
 const persistConfig = {
   key: 'auth',
   storage,
+//   whitelist: ['token'],
 };
-console.log(storage);
+
+
 export const store = configureStore({
   reducer: {
     [contactApi.reducerPath]: contactApi.reducer,
     auth: persistReducer(persistConfig, authSlice),
-
   },
 
   middleware: getDefaultMiddleware => [
@@ -36,7 +34,6 @@ export const store = configureStore({
     }),
     contactApi.middleware,
   ],
- 
 });
 
 export const persistor = persistStore(store);

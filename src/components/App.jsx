@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate,  Route, Routes } from 'react-router-dom';
 import { Contacts } from 'pages/Contacts/Contacts';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Login } from 'pages/Login/Login';
@@ -8,12 +8,12 @@ import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
 
 export function App() {
- const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const fetchCurrentUser = useSelector(authSelectors.getIsLoggedIn);
   return (
     <div className="ggggg">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          {!isLoggedIn ? (
+          {!fetchCurrentUser ? (
             <>
               <Route path="login" element={<Login />} />
               <Route index element={<Register />} />
@@ -24,7 +24,6 @@ export function App() {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Outlet />
     </div>
   );
 }

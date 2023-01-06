@@ -66,4 +66,3 @@ function getRandomHexColor() {
 //   return `#${Math.floor(Math.random() * 176543  ).toString(16)}`;
 return  '#' + (((1 + Math.random()) * (1 << 24)) | 0).toString(16).substr(-6);
 }
-console.log(getRandomHexColor());

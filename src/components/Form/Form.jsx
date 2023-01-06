@@ -18,10 +18,12 @@ export function Form() {
   const handleSubmit = async e => {
     e.preventDefault();
     reset();
-    await addContact({ name: name, number: number });
+    const x =  await addContact({ name: name, number: number });
+      console.log(x);
   };
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {

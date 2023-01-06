@@ -9,7 +9,7 @@ export const Logo = () => {
   return (
     <Logos>
       <div>
-        <StyledLink to="/contacts">
+        <StyledLink to="contacts">
           <span role="img" aria-label="telephone icon">
             <Img src={telephoneImg} alt="telephone"></Img>
           </span>
