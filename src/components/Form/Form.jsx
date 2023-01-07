@@ -14,8 +14,8 @@ import { Button } from '../LoginForm/LoginForm.styled';
 
 export function Form() {
   const [addContact] = useAddContactsMutation();
-  const { data } = useGetContactsQuery();
-  const handleSubmit = async e => {
+    const { data } = useGetContactsQuery();
+   const handleSubmit = async e => {
     e.preventDefault();
     reset();
     const x =  await addContact({ name: name, number: number });

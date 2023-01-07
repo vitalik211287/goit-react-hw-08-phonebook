@@ -1,12 +1,11 @@
-import { Navigate } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import { Route, Redirect } from 'react-router-dom';
 
-export default function PrivateRoute({
-  isLoggedIn,
-  redirectPath = '/',
-  children,
-}) {
-  if (!isLoggedIn) {
-    return <Navigate to={redirectPath} replace />;
-  }
-  return children;
-}
+// export default function PrivateRoute({ children, ...routeProps }) {
+//   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+//   return (
+//     <Route {...routeProps}>
+//       {isLoggedIn ? children : <Redirect to="/register" />}
+//     </Route>
+//   );
+// }
