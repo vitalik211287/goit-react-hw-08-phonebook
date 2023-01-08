@@ -1,19 +1,24 @@
-import React from 'react';
-import { Navigate,  Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Contacts } from 'pages/Contacts/Contacts';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Login } from 'pages/Login/Login';
 import { Register } from 'pages/Register/Regiser';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
+import { fetchCurrentUser } from 'redux/auth/auth-operations';
 
 export function App() {
-  const fetchCurrentUser = useSelector(authSelectors.getIsLoggedIn);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+  const IsLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <div className="ggggg">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          {!fetchCurrentUser ? (
+          {!IsLoggedIn ? (
             <>
               <Route path="login" element={<Login />} />
               <Route index element={<Register />} />
