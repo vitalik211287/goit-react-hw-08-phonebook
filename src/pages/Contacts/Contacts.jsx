@@ -9,7 +9,7 @@ import { Container } from "./Contacts.styled";
 
 
 
-export const Contacts = () => {
+const Contacts = () => {
      const [filter, setFilter] = useState('');
     return (
       <>
@@ -21,3 +21,4 @@ export const Contacts = () => {
       </>
     );
 };
+export default Contacts;

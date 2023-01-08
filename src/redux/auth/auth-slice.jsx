@@ -1,6 +1,6 @@
 // import { fabClasses } from "@mui/material";
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, fetchCurrentUser } from './auth-operations';
+import { register, logIn, logOut, refreshUser } from './auth-operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -28,16 +28,16 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    [fetchCurrentUser.pending](state) {
-      state.isFetchingCurrentUser = true;
+    [refreshUser.pending](state) {
+      state.isRefreshing = true;
     },
-    [fetchCurrentUser.fulfilled](state, action) {
+    [refreshUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
-      state.isFetchingCurrentUser = false;
+      state.isRefreshing = false;
     },
-    [fetchCurrentUser.rejected](state) {
-      state.isFetchingCurrentUser = false;
+    [refreshUser.rejected](state) {
+      state.isRefreshing = false;
       state.token = '';
     },
   },
